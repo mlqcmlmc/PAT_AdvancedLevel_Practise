@@ -21,7 +21,7 @@ struct AlgraphList
     vector<VertexNode> vertex_list;
 };
 
-void CreatAlgraph(AlgraphList* list)
+void CreatAlgraph(AlgraphList *list)
 {
     int road_current, road_save;
     int rescue_num_temp;
@@ -55,7 +55,7 @@ void CreatAlgraph(AlgraphList* list)
 
 int main()
 {
-    AlgraphList* list;
+    AlgraphList *list = nullptr;
     CreatAlgraph(list);
 
     return 0;
