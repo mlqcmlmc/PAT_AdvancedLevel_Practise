@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1001_APlusBFormat", "PAT1001_APlusBFormat\PAT1001_APlusBFormat.vcxproj", "{6942F3F0-E059-46E5-8A2D-CADEFC962176}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1013_BattleOverCities", "PAT1013_BattleOverCities\PAT1013_BattleOverCities.vcxproj", "{BCF6E7E3-51DE-4869-B594-50EDF9DC141A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1015_ReversiblePrimes", "PAT1015_ReversiblePrimes\PAT1015_ReversiblePrimes.vcxproj", "{57C7DE3A-56E2-4C4D-8FC0-62ECC59FC364}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1014_WaitinginLine", "PAT1014_WaitinginLine\PAT1014_WaitinginLine.vcxproj", "{7258ECE2-238F-4F63-9FFD-C5169F26FE2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{57C7DE3A-56E2-4C4D-8FC0-62ECC59FC364}.Debug|Win32.Build.0 = Debug|Win32
 		{57C7DE3A-56E2-4C4D-8FC0-62ECC59FC364}.Release|Win32.ActiveCfg = Release|Win32
 		{57C7DE3A-56E2-4C4D-8FC0-62ECC59FC364}.Release|Win32.Build.0 = Release|Win32
+		{7258ECE2-238F-4F63-9FFD-C5169F26FE2A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7258ECE2-238F-4F63-9FFD-C5169F26FE2A}.Debug|Win32.Build.0 = Debug|Win32
+		{7258ECE2-238F-4F63-9FFD-C5169F26FE2A}.Release|Win32.ActiveCfg = Release|Win32
+		{7258ECE2-238F-4F63-9FFD-C5169F26FE2A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
