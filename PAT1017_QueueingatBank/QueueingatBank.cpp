@@ -3,18 +3,21 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-//#define MAX_CUSTOMER 10000
+
 #define BANK_OPEN (8*60*60)
 #define BANK_CLOSE (17*60*60-BANK_OPEN)
+
 struct CustomerTime
 {
     long int arrive_time;
     int process_time;
 };
+
 bool cmp(CustomerTime a, CustomerTime b)
 {
     return a.arrive_time < b.arrive_time;
 }
+
 int main()
 {
     int N, K;
@@ -56,5 +59,6 @@ int main()
     }
     double ave_wait_time = (double)(wait_time_sum) / (serve_num*60);
     printf("%.1f\n", ave_wait_time);
+
     return 0;
 }
