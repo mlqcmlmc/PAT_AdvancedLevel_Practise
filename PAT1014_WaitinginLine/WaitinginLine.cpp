@@ -4,10 +4,7 @@
 #include<queue>
 #include"stdio.h"
 using namespace std;
-
 int N, M, K, Q;
-
-
 struct Window
 {
     int mark = 0;
@@ -15,21 +12,13 @@ struct Window
     int window_last = 0;
     queue<int> window_time;
 };
-
 bool cmp(Window a, Window b)
 {
-    if (a.window_first == b.window_first)
-    {
-        return a.mark < b.mark;
-    }
-    else
-    {
-        return a.window_first < b.window_first;
-    }
+    if (a.window_first == b.window_first) return a.mark < b.mark;
+    else return a.window_first < b.window_first;
 }
 int main()
 {
-
     cin >> N >> M >> K >> Q;
     vector<int> left_time, serve_time;
     vector<Window> windows;
@@ -38,9 +27,6 @@ int main()
     {
         windows[i].mark = i;
     }
-    //vector<int> window_first, window_last;
-    //window_first.resize(N);
-    //window_last.resize(N);
     int temp_time;
     for (int i = 0; i < K; ++i)
     {
@@ -49,38 +35,29 @@ int main()
         {
             windows[i%N].window_time.push(temp_time);
             windows[i%N].window_last += temp_time;			//计算每个窗口的最后一个人的离开时间
-
             left_time.push_back(windows[i%N].window_last);	//保存每个顾客的离开时间
         }
         else if (windows[i%N].window_time.size() == M - 1)
         {
             windows[i%N].window_time.push(temp_time);
             windows[i%N].window_last += temp_time;			//计算每个窗口的最后一个人的离开时间
-
             auto data = windows[i%N].window_time.front();
             windows[i%N].window_first += data;				//计算每个窗口的第一个人的离开时间
-
             left_time.push_back(windows[i%N].window_last);	//保存每个顾客的离开时间
         }
         else
         {
             sort(windows.begin(), windows.end(), cmp);		//排序，每个窗口第一个人将要离开的最小时间
-
             windows[0].window_time.push(temp_time);
             windows[0].window_last += temp_time;			//计算每个窗口的最后一个人的离开时间
-
             windows[0].window_time.pop();
             auto data = windows[0].window_time.front();
             windows[0].window_first += data;				//计算每个窗口的第一个人的离开时间
-
-
             left_time.push_back(windows[0].window_last);	//保存每个顾客的离开时间
         }
         serve_time.push_back(left_time[i] - temp_time);
     }
-    int out_customer;
-    int shi;
-    int fen;
+    int out_customer, shi, fen;
     for (int i = 0; i < Q; ++i)
     {
         cin >> out_customer;
@@ -98,6 +75,5 @@ int main()
             cout << "Sorry" << endl;
         }
     }
-
     return 0;
 }
