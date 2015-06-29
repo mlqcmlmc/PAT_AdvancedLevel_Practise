@@ -1,2 +1,2 @@
-Reversible：可逆的		Primes：素数		vitally：极其地
-ad
+Reversible：可逆的		Primes：素数		vitally：极其地		Palindromic：复发的,回文的
+even:偶数的				notation：符合
