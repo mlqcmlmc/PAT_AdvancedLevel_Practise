@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1016_PhoneBills", "PAT10
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1019_GeneralPalindromicNumber", "PAT1019_GeneralPalindromicNumber\PAT1019_GeneralPalindromicNumber.vcxproj", "{A35F182E-62F5-4809-A775-DB7DFD03136D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1020_TreeTraversals", "PAT1020_TreeTraversals\PAT1020_TreeTraversals.vcxproj", "{1D7A94D2-0E0F-4D73-959F-30DFC894C4CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -117,6 +119,10 @@ Global
 		{A35F182E-62F5-4809-A775-DB7DFD03136D}.Debug|Win32.Build.0 = Debug|Win32
 		{A35F182E-62F5-4809-A775-DB7DFD03136D}.Release|Win32.ActiveCfg = Release|Win32
 		{A35F182E-62F5-4809-A775-DB7DFD03136D}.Release|Win32.Build.0 = Release|Win32
+		{1D7A94D2-0E0F-4D73-959F-30DFC894C4CF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1D7A94D2-0E0F-4D73-959F-30DFC894C4CF}.Debug|Win32.Build.0 = Debug|Win32
+		{1D7A94D2-0E0F-4D73-959F-30DFC894C4CF}.Release|Win32.ActiveCfg = Release|Win32
+		{1D7A94D2-0E0F-4D73-959F-30DFC894C4CF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
