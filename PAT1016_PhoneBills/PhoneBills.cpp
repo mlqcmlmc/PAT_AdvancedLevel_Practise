@@ -5,8 +5,8 @@
 #include"stdio.h"
 using namespace std;
 
-double eachhour[24];
-double daybill = 0.0;
+long double eachhour[24];
+long double daybill = 0.0;
 int N;
 
 struct CallRecord
@@ -140,6 +140,11 @@ long double CalculateBill(const TimeInt online, const TimeInt offline)
     TimeInt end = offline;
     bill += eachhour[begin.hour] * (60 - begin.minute);
     ++begin.hour;
+    if (begin.hour >= 24)
+    {
+        begin.hour = 0;
+        ++begin.day;
+    }
     begin.minute = 0;
     if ((begin.day < end.day) && (begin.hour <= end.hour))
     {
