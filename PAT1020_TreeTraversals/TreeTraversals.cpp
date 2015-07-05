@@ -1,8 +1,9 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 using namespace std;
 
-
+queue<Node*> st;
 
 struct Node
 {
