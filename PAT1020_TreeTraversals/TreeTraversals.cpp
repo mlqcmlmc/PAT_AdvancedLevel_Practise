@@ -34,7 +34,28 @@ Node* CreatTree(int n,int *post, int *in)
 	return root;
 }
 
-
+queue<Node*> BFSQueue;
+void BFSPrint()
+{
+	while (!BFSQueue.empty())
+	{
+		if (BFSQueue.front()->lchild != NULL)
+		{
+			BFSQueue.push(BFSQueue.front()->lchild);
+		}
+		if (BFSQueue.front()->rchild != NULL)
+		{
+			BFSQueue.push(BFSQueue.front()->rchild);
+		}
+		cout << BFSQueue.front()->data;
+		BFSQueue.pop();
+		if (!BFSQueue.empty())
+		{
+			cout << ' ';
+		}
+	}
+	cout << endl;
+}
 int main()
 {
 	int N;
@@ -49,8 +70,8 @@ int main()
 		cin >> inoder[i];
 	}
 	Node *root = CreatTree(N, postoder, inoder);
-
-
+	BFSQueue.push(root);
+	BFSPrint();
 
 	return 0;
 }
