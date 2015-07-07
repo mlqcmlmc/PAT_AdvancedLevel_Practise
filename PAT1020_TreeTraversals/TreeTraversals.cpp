@@ -3,7 +3,7 @@
 #include<queue>
 using namespace std;
 
-queue<Node*> st;
+
 
 struct Node
 {
@@ -11,6 +11,7 @@ struct Node
 	Node *lchild, *rchild;
 	Node(){}
 };
+queue<Node*> st;
 
 Node* CreatTree(int n,int *post, int *in)
 {
