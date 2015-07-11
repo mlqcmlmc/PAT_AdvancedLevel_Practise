@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1001_APlusBFormat", "PAT1001_APlusBFormat\PAT1001_APlusBFormat.vcxproj", "{6942F3F0-E059-46E5-8A2D-CADEFC962176}"
 EndProject
@@ -48,6 +48,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1025_PATRanking", "PAT1025_PATRanking\PAT1025_PATRanking.vcxproj", "{A887B993-5451-425E-BEE0-B991979A265A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1027_ColorsinMars", "PAT1027_ColorsinMars\PAT1027_ColorsinMars.vcxproj", "{36FD88F5-A044-4194-B2BC-B2B1EC1DAD5D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1026_TableTennis", "PAT1026_TableTennis\PAT1026_TableTennis.vcxproj", "{92257933-5C6B-4F24-B3F3-90C9C52A93DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +149,10 @@ Global
 		{36FD88F5-A044-4194-B2BC-B2B1EC1DAD5D}.Debug|Win32.Build.0 = Debug|Win32
 		{36FD88F5-A044-4194-B2BC-B2B1EC1DAD5D}.Release|Win32.ActiveCfg = Release|Win32
 		{36FD88F5-A044-4194-B2BC-B2B1EC1DAD5D}.Release|Win32.Build.0 = Release|Win32
+		{92257933-5C6B-4F24-B3F3-90C9C52A93DE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{92257933-5C6B-4F24-B3F3-90C9C52A93DE}.Debug|Win32.Build.0 = Debug|Win32
+		{92257933-5C6B-4F24-B3F3-90C9C52A93DE}.Release|Win32.ActiveCfg = Release|Win32
+		{92257933-5C6B-4F24-B3F3-90C9C52A93DE}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
