@@ -149,76 +149,156 @@ int main()
 				ave_wait.push(players[i]);
 			}
 			//处理队列中的数据
-			if (!ave_wait.empty() && vip_wait.empty())
-			{
-				while (!ave_wait.empty() && (ave_wait.front().arrive_time >= vip_tables[0].avai_time 
-					|| ave_wait.front().arrive_time >= tables[0].avai_time))
-				{
-					if ((tables[0].avai_time < vip_tables[0].avai_time) || 
-						(tables[0].avai_time == vip_tables[0].avai_time && tables[0].table_No < vip_tables[0].table_No))
-					{
-						ave_wait.front().wait_time = tables[0].avai_time - ave_wait.front().arrive_time;
-						ave_wait.front().serve_time = tables[0].avai_time;
-						++tables[0].count;
-						tables[0].avai_time = tables[0].avai_time + ave_wait.front().play_time;
-						served_players.push_back(ave_wait.front());
-					}
-					else
-					{
-						ave_wait.front().wait_time = vip_tables[0].avai_time - ave_wait.front().arrive_time;
-						ave_wait.front().serve_time = vip_tables[0].avai_time;
-						++vip_tables[0].count;
-						vip_tables[0].avai_time = vip_tables[0].avai_time + ave_wait.front().play_time;
-						served_players.push_back(ave_wait.front());
-					}
-					ave_wait.pop();
-					sort(tables.begin(), tables.end(), CmpTable);
-					sort(vip_tables.begin(), vip_tables.end(), CmpTable);
-				}
-			}
-			else if (!vip_wait.empty() && ave_wait.empty())
-			{
-				while (!vip_wait.empty() && (vip_wait.front().arrive_time >= vip_tables[0].avai_time
-					|| vip_wait.front().arrive_time >= tables[0].avai_time))
-				{
-					if (tables[0].avai_time >= vip_tables[0].avai_time)
-					{
-						vip_wait.front().wait_time = vip_tables[0].avai_time - vip_wait.front().arrive_time;
-						vip_wait.front().serve_time = vip_tables[0].avai_time;
-						++vip_tables[0].count;
-						vip_tables[0].avai_time = vip_tables[0].avai_time + vip_wait.front().play_time;
-						served_players.push_back(vip_wait.front());
-					}
-					else
-					{
-						vip_wait.front().wait_time = tables[0].avai_time - vip_wait.front().arrive_time;
-						vip_wait.front().serve_time = tables[0].avai_time;
-						++tables[0].count;
-						tables[0].avai_time = tables[0].avai_time + vip_wait.front().play_time;
-						served_players.push_back(vip_wait.front());
-					}
-					vip_wait.pop();
-					sort(tables.begin(), tables.end(), CmpTable);
-					sort(vip_tables.begin(), vip_tables.end(), CmpTable);
-				}
-			}
-			else if (!vip_wait.empty() && !ave_wait.empty())
-			{
+			//if (!ave_wait.empty() && vip_wait.empty())
+			//{
+   //             while (!ave_wait.empty() && (players[i].arrive_time >= vip_tables[0].avai_time
+   //                 || players[i].arrive_time >= tables[0].avai_time))
+			//	{
+			//		if ((tables[0].avai_time < vip_tables[0].avai_time) || 
+			//			(tables[0].avai_time == vip_tables[0].avai_time && tables[0].table_No < vip_tables[0].table_No))
+			//		{
+			//			ave_wait.front().wait_time = tables[0].avai_time - ave_wait.front().arrive_time;
+			//			ave_wait.front().serve_time = tables[0].avai_time;
+			//			++tables[0].count;
+			//			tables[0].avai_time = tables[0].avai_time + ave_wait.front().play_time;
+			//			served_players.push_back(ave_wait.front());
+			//		}
+			//		else
+			//		{
+			//			ave_wait.front().wait_time = vip_tables[0].avai_time - ave_wait.front().arrive_time;
+			//			ave_wait.front().serve_time = vip_tables[0].avai_time;
+			//			++vip_tables[0].count;
+			//			vip_tables[0].avai_time = vip_tables[0].avai_time + ave_wait.front().play_time;
+			//			served_players.push_back(ave_wait.front());
+			//		}
+			//		ave_wait.pop();
+			//		sort(tables.begin(), tables.end(), CmpTable);
+			//		sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+			//	}
+			//}
+			//else if (!vip_wait.empty() && ave_wait.empty())
+			//{
+   //             while (!vip_wait.empty() && (players[i].arrive_time >= vip_tables[0].avai_time
+   //                 || players[i].arrive_time >= tables[0].avai_time))
+			//	{
+			//		if (tables[0].avai_time >= vip_tables[0].avai_time)
+			//		{
+			//			vip_wait.front().wait_time = vip_tables[0].avai_time - vip_wait.front().arrive_time;
+			//			vip_wait.front().serve_time = vip_tables[0].avai_time;
+			//			++vip_tables[0].count;
+			//			vip_tables[0].avai_time = vip_tables[0].avai_time + vip_wait.front().play_time;
+			//			served_players.push_back(vip_wait.front());
+			//		}
+			//		else
+			//		{
+			//			vip_wait.front().wait_time = tables[0].avai_time - vip_wait.front().arrive_time;
+			//			vip_wait.front().serve_time = tables[0].avai_time;
+			//			++tables[0].count;
+			//			tables[0].avai_time = tables[0].avai_time + vip_wait.front().play_time;
+			//			served_players.push_back(vip_wait.front());
+			//		}
+			//		vip_wait.pop();
+			//		sort(tables.begin(), tables.end(), CmpTable);
+			//		sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+			//	}
+			//}
+			//else if (!vip_wait.empty() && !ave_wait.empty())
+			//{
 				//还有最后一种情况没有写完
+                
+                while (!vip_wait.empty() && !ave_wait.empty() && (players[i].arrive_time >= vip_tables[0].avai_time
+                    || players[i].arrive_time >= tables[0].avai_time))
+                {
+                    if (tables[0].avai_time >= vip_tables[0].avai_time)
+                    {
+                        vip_wait.front().wait_time = vip_tables[0].avai_time - vip_wait.front().arrive_time;
+                        vip_wait.front().serve_time = vip_tables[0].avai_time;
+                        ++vip_tables[0].count;
+                        vip_tables[0].avai_time = vip_tables[0].avai_time + vip_wait.front().play_time;
+                        served_players.push_back(vip_wait.front());
+                        vip_wait.pop();
+                        sort(tables.begin(), tables.end(), CmpTable);
+                        sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+                    }
+                    else
+                    {
+                        if (vip_wait.front().arrive_time > ave_wait.front().arrive_time)
+                        {
+                            ave_wait.front().wait_time = tables[0].avai_time - ave_wait.front().arrive_time;
+                            ave_wait.front().serve_time = tables[0].avai_time;
+                            ++tables[0].count;
+                            tables[0].avai_time = tables[0].avai_time + ave_wait.front().play_time;
+                            served_players.push_back(ave_wait.front());
+                            ave_wait.pop();
+                            sort(tables.begin(), tables.end(), CmpTable);
+                            sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+                        }
+                        else
+                        {
+                            vip_wait.front().wait_time = tables[0].avai_time - vip_wait.front().arrive_time;
+                            vip_wait.front().serve_time = tables[0].avai_time;
+                            ++tables[0].count;
+                            tables[0].avai_time = tables[0].avai_time + vip_wait.front().play_time;
+                            served_players.push_back(vip_wait.front());
+                            vip_wait.pop();
+                            sort(tables.begin(), tables.end(), CmpTable);
+                            sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+                        }
 
-			}
 
+                    }
+                }
+                while (!ave_wait.empty() && (players[i].arrive_time >= vip_tables[0].avai_time
+                    || players[i].arrive_time >= tables[0].avai_time))
+                {
+                    if ((tables[0].avai_time < vip_tables[0].avai_time) ||
+                        (tables[0].avai_time == vip_tables[0].avai_time && tables[0].table_No < vip_tables[0].table_No))
+                    {
+                        ave_wait.front().wait_time = tables[0].avai_time - ave_wait.front().arrive_time;
+                        ave_wait.front().serve_time = tables[0].avai_time;
+                        ++tables[0].count;
+                        tables[0].avai_time = tables[0].avai_time + ave_wait.front().play_time;
+                        served_players.push_back(ave_wait.front());
+                    }
+                    else
+                    {
+                        ave_wait.front().wait_time = vip_tables[0].avai_time - ave_wait.front().arrive_time;
+                        ave_wait.front().serve_time = vip_tables[0].avai_time;
+                        ++vip_tables[0].count;
+                        vip_tables[0].avai_time = vip_tables[0].avai_time + ave_wait.front().play_time;
+                        served_players.push_back(ave_wait.front());
+                    }
+                    ave_wait.pop();
+                    sort(tables.begin(), tables.end(), CmpTable);
+                    sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+                }
+                while (!vip_wait.empty() && (players[i].arrive_time >= vip_tables[0].avai_time
+                    || players[i].arrive_time >= tables[0].avai_time))
+                {
+                    if (tables[0].avai_time >= vip_tables[0].avai_time)
+                    {
+                        vip_wait.front().wait_time = vip_tables[0].avai_time - vip_wait.front().arrive_time;
+                        vip_wait.front().serve_time = vip_tables[0].avai_time;
+                        ++vip_tables[0].count;
+                        vip_tables[0].avai_time = vip_tables[0].avai_time + vip_wait.front().play_time;
+                        served_players.push_back(vip_wait.front());
+                    }
+                    else
+                    {
+                        vip_wait.front().wait_time = tables[0].avai_time - vip_wait.front().arrive_time;
+                        vip_wait.front().serve_time = tables[0].avai_time;
+                        ++tables[0].count;
+                        tables[0].avai_time = tables[0].avai_time + vip_wait.front().play_time;
+                        served_players.push_back(vip_wait.front());
+                    }
+                    vip_wait.pop();
+                    sort(tables.begin(), tables.end(), CmpTable);
+                    sort(vip_tables.begin(), vip_tables.end(), CmpTable);
+                }
 
-
+			//}
 
 		}
-
-
-
-
-		
-
-
 	}
 
 	return 0;
