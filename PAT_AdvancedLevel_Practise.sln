@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1001_APlusBFormat", "PAT1001_APlusBFormat\PAT1001_APlusBFormat.vcxproj", "{6942F3F0-E059-46E5-8A2D-CADEFC962176}"
 EndProject
@@ -54,6 +54,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1028_ListSorting", "PAT1028_ListSorting\PAT1028_ListSorting.vcxproj", "{247FD652-349B-4538-970A-D16DE3CCDD44}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1029_Median", "PAT1029_Median\PAT1029_Median.vcxproj", "{E767578B-B5DD-47EA-B0C2-BDD335F985F3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1031_HelloWorldforU", "PAT1031_HelloWorldforU\PAT1031_HelloWorldforU.vcxproj", "{E0CDB637-EFB2-450E-B45A-574C63F7D487}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +167,10 @@ Global
 		{E767578B-B5DD-47EA-B0C2-BDD335F985F3}.Debug|Win32.Build.0 = Debug|Win32
 		{E767578B-B5DD-47EA-B0C2-BDD335F985F3}.Release|Win32.ActiveCfg = Release|Win32
 		{E767578B-B5DD-47EA-B0C2-BDD335F985F3}.Release|Win32.Build.0 = Release|Win32
+		{E0CDB637-EFB2-450E-B45A-574C63F7D487}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0CDB637-EFB2-450E-B45A-574C63F7D487}.Debug|Win32.Build.0 = Debug|Win32
+		{E0CDB637-EFB2-450E-B45A-574C63F7D487}.Release|Win32.ActiveCfg = Release|Win32
+		{E0CDB637-EFB2-450E-B45A-574C63F7D487}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
