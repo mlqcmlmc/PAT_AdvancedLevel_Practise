@@ -1,40 +1,37 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <vector>
 #include <set>
 #include <algorithm>
+#include "stdio.h"
 using namespace std;
-int a[100001] = { 0 };
+int num[10001] = { 0 };
+int input[100001] = { 0 };
 int main()
 {
     int N, temp, pos;
+	int flag = 0;
     vector<int> vec;
     cin >> N;
-    for (int i = 0; i < N; ++i)
-    {
-        cin >> temp;        
-        auto ite = find(vec.begin(), vec.end(), temp);
-        if (ite==vec.end())
-        {
-            vec.push_back(temp);
-        }
-        else
-        {
-            pos = ite - vec.begin();
-            a[pos] = 1;
-        }
-    }
-    int i;
-    for (i = 0; i < vec.size();++i)
-    {
-        if (a[i] == 0)
-        {
-            cout << vec[i] << endl;
-            break;
-        }
-    }
-    if (i==vec.size())
-    {
-        cout << "None" << endl;
-    }
+	for (int i = 0; i < N;++i)
+	{
+		scanf("%d", &input[i]);
+		++num[input[i]];
+	}
+	for (int i = 0; i < N;++i)
+	{
+		if (num[input[i]]==1)
+		{
+			cout << input[i] << endl;
+			flag = 1;
+			break;
+		}
+		
+	}
+	if (!flag)
+	{
+		cout << "None" << endl;
+
+	}
     return 0;
 }
