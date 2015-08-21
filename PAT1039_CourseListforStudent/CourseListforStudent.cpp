@@ -10,15 +10,14 @@ int main()
 	int stu_num, course_num;
 	map<string, set<int>> students;
 	cin >> stu_num >> course_num;
+	string name;
+	name.resize(100); //需要预先分配空间
+	int No_course, num;
 	for (int i = 0; i < course_num;++i)
-	{
-		int No_course, num;
-		string name;
+	{		
 		scanf("%d %d", &No_course, &num);
 		for (int j = 0; j < num;++j)
 		{
-			//cin >> name;
-			name.resize(100); //需要预先分配空间
 			scanf("%s", &name[0]);
 			auto ite = students.find(name);
 			if (ite!=students.end())
@@ -36,7 +35,6 @@ int main()
 	for (int i = 0; i < stu_num;++i)
 	{
 		string name;
-		//cin >> name;
 		name.resize(100); //需要预先分配空间
 		scanf("%s", &name[0]);
 		printf("%s %d", name.c_str(), students[name].size());
