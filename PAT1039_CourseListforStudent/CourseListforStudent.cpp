@@ -1,47 +1,47 @@
 #define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <set>
 #include <string>
+#include <vector>
 #include "stdio.h"
 using namespace std;
+
+//巧用数组，将string转换为int，会很快
+
+int hashName(const char *name){
+    return (name[0] - 'A') * 26 * 26 * 10\
+        + (name[1] - 'A') * 26 * 10\
+        + (name[2] - 'A') * 10\
+        + (name[3] - '0');
+}
 int main()
 {
 	int stu_num, course_num;
-	map<string, set<int>> students;
-	cin >> stu_num >> course_num;
-	string name;
-	name.resize(100); //需要预先分配空间
+    char name[5];
+    vector<set<int>> students;
+    students.resize(26 * 26 * 26 * 10 + 1);
+	cin >> stu_num >> course_num;    
 	int No_course, num;
 	for (int i = 0; i < course_num;++i)
 	{		
 		scanf("%d %d", &No_course, &num);
 		for (int j = 0; j < num;++j)
 		{
-			scanf("%s", &name[0]);
-			auto ite = students.find(name);
-			if (ite!=students.end())
-			{
-				ite->second.insert(No_course);
-			}
-			else
-			{
-				set<int> temp_set;
-				temp_set.insert(No_course);
-				students.insert({ name, temp_set });
-			}
+			scanf("%s", name);
+            int int_name = hashName(name);
+            students[int_name].insert(No_course);
 		}
 	}
 	for (int i = 0; i < stu_num;++i)
 	{
-		string name;
-		name.resize(100); //需要预先分配空间
-		scanf("%s", &name[0]);
-		printf("%s %d", name.c_str(), students[name].size());
-		auto ite = students[name].begin();
-		for (; ite != students[name].end(); ++ite)
+		scanf("%s", name);
+        int int_name = hashName(name);
+        printf("%s %d", name, students[int_name].size());
+        set<int>::iterator ite = students[int_name].begin();
+        for (; ite != students[int_name].end(); ++ite)
 		{
-			cout << ' ' << *ite;
+            cout << ' ' << *ite;
 		}
 		cout << endl;
 	}
