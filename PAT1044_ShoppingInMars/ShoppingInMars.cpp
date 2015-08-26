@@ -2,8 +2,9 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-#define NumMax 100001
+#define NumMax 100002
 long long int input[NumMax] = { 0 };
+long long int allsum[NumMax] = { 0 };
 struct tag
 {
 	long long int begin;
@@ -15,59 +16,68 @@ int main()
 	cin >> N >> M;
 	vector<tag> vec_out;
 	tag tmp_tag;
-	for (int i = 0; i < N; ++i)
+	for (int i = 1; i <= N; ++i)
 	{
 		scanf("%ld", &input[i]);
-		//cin >> input[i];
+		allsum[i] = allsum[i - 1] + input[i];
 	}
-	long long int sum = 0, sum_min = -1;
-	long long int i, j;
-	long long int* begin = input;
-	long long int* end = input;
-	for (; begin < input + N;)
+	long long int begin = 0, end = 0;
+	long long int sum = 0, sum_min = 200000000;
+	while (!(sum<M&&end==N))
 	{
-		for (; end < input + N; )
+		sum = allsum[end] - allsum[begin];
+		if (sum<M&&end < N)
 		{
-			sum += *end;
 			++end;
 			if (sum >= M)
 			{
-				break;
+				if (sum == sum_min)
+				{
+					tmp_tag.begin = begin;
+					tmp_tag.end = end;
+					vec_out.push_back(tmp_tag);
+					sum_min = sum;
+				}
+				else if (sum < sum_min)
+				{
+					vec_out.clear();
+					tmp_tag.begin = begin;
+					tmp_tag.end = end;
+					vec_out.push_back(tmp_tag);
+					sum_min = sum;
+				}
 			}
 		}
-		if (sum_min<0)
+		else
 		{
-			tmp_tag.begin = begin-input ;
-			tmp_tag.end = end-input ;
-			vec_out.push_back(tmp_tag);
-			sum_min = sum;
-		}
-		else if (sum == sum_min&&sum >= M)
-		{
-			tmp_tag.begin = begin - input;
-			tmp_tag.end = end - input;
-			vec_out.push_back(tmp_tag);
-		}
-		else if (sum < sum_min&&sum >= M)
-		{
-			vec_out.clear();
-			tmp_tag.begin = begin - input ;
-			tmp_tag.end = end - input ;
-			vec_out.push_back(tmp_tag);
-			sum_min = sum;
-		}
-
-		while (sum >= M)
-		{
-			sum = sum - *begin;
 			++begin;
+			if (sum >= M)
+			{
+				if (sum == sum_min)
+				{
+					tmp_tag.begin = begin;
+					tmp_tag.end = end;
+					vec_out.push_back(tmp_tag);
+					sum_min = sum;
+				}
+				else if (sum < sum_min)
+				{
+					vec_out.clear();
+					tmp_tag.begin = begin;
+					tmp_tag.end = end;
+					vec_out.push_back(tmp_tag);
+					sum_min = sum;
+				}
+			}
 		}
-		sum = sum + *(begin - 1);
+		sum = allsum[end] - allsum[begin];
 
 	}
 	for (int i = 0; i < vec_out.size(); ++i)
 	{
-		cout << vec_out[i].begin << '-' << vec_out[i].end << endl;
+		printf("%ld", vec_out[i].begin);
+		printf("-");
+		printf("%ld\n", vec_out[i].end);
 	}
 	return 0;
 }
