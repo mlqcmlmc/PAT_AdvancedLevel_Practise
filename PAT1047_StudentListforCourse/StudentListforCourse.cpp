@@ -27,7 +27,9 @@ int main()
     for (int i = 0; i < M; ++i)
     {
         printf("%d %d\n", i + 1, courses[i].size());
-        for (auto beg = courses[i].begin(), end = courses[i].end(); beg != end; ++beg)
+        auto beg = courses[i].begin();
+        auto end = courses[i].end();
+        for (; beg != end; ++beg)
         {
             cout << *beg << endl;
         }
