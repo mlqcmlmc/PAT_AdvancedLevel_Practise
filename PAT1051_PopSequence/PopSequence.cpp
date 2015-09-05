@@ -1,48 +1,43 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <vector>
+#include <stack>
 #include <algorithm>
 using namespace std;
 int main()
 {
     int M, N, K;
-    cin >> M >> N >> K;
-    vector<int> sequence(N);
-    for (int i = 0; i < N; ++i)
+    scanf("%d %d %d", &M, &N, &K);
+    for (int i = 0; i < K; ++i)
     {
-        sequence[i] = i + 1;
-    }
-    vector<int> pop_sequence(N), push_sequence, stack_sequence;
-    int stack_count = 0;
-    for (int i = 0; i < K;++i)
-    {
-        push_sequence.clear();
-        stack_sequence.clear();
-        stack_count = 0;
+        stack<int> stack_;
+        bool flag = true;
+        int cur = 1;
         for (int j = 0; j < N;++j)
         {
-            cin >> pop_sequence[j];
-        }
-        for (int h = N - 1; h >= 0;--h)
-        {
-            if (h>0 && pop_sequence[h] < pop_sequence[h - 1] && stack_count < M)
+            int num;
+            scanf("%d", &num);
+            while (stack_.empty()||stack_.top()!=num)
             {
-                push_sequence.push_back(pop_sequence[h]);
-                ++stack_count;
+                stack_.push(cur);
+                if (stack_.size()>M)
+                {
+                    flag = false;
+                    break;
+                }
+                ++cur;
             }
-            else
+            if (flag && (!stack_.empty()) && stack_.top() == num)
             {
-                stack_sequence.push_back(pop_sequence[h]);
+                stack_.pop();
             }
         }
-        reverse(stack_sequence.begin(), stack_sequence.end());
-        push_sequence.insert(push_sequence.end(), stack_sequence.begin(), stack_sequence.end());
-        if (push_sequence==sequence)
+        if (flag)
         {
-            cout << "YES" << endl;
+            printf("YES\n");
         }
-        else
+        else 
         {
-            cout << "NO" << endl;
+            printf("NO\n");
         }
     }
     return 0;

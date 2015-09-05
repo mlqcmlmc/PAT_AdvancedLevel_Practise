@@ -89,6 +89,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1052_LinkedListSorting",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1053_PathofEqualWeight", "PAT1053_PathofEqualWeight\PAT1053_PathofEqualWeight.vcxproj", "{19684462-99D0-4D67-AF6E-771F20A472F1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1054_TheDominantColor", "PAT1054_TheDominantColor\PAT1054_TheDominantColor.vcxproj", "{5F250685-68DB-4781-8186-E7812C4CB0FA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1055_TheWorld'sRichest", "PAT1055_TheWorld'sRichest\PAT1055_TheWorld'sRichest.vcxproj", "{986FFCD4-883B-412D-927A-24CF274DE4B2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PAT1056_MiceandRice", "PAT1056_MiceandRice\PAT1056_MiceandRice.vcxproj", "{189124DC-1612-45CA-AE46-9C27E1B8CFC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -267,6 +273,18 @@ Global
 		{19684462-99D0-4D67-AF6E-771F20A472F1}.Debug|Win32.Build.0 = Debug|Win32
 		{19684462-99D0-4D67-AF6E-771F20A472F1}.Release|Win32.ActiveCfg = Release|Win32
 		{19684462-99D0-4D67-AF6E-771F20A472F1}.Release|Win32.Build.0 = Release|Win32
+		{5F250685-68DB-4781-8186-E7812C4CB0FA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5F250685-68DB-4781-8186-E7812C4CB0FA}.Debug|Win32.Build.0 = Debug|Win32
+		{5F250685-68DB-4781-8186-E7812C4CB0FA}.Release|Win32.ActiveCfg = Release|Win32
+		{5F250685-68DB-4781-8186-E7812C4CB0FA}.Release|Win32.Build.0 = Release|Win32
+		{986FFCD4-883B-412D-927A-24CF274DE4B2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{986FFCD4-883B-412D-927A-24CF274DE4B2}.Debug|Win32.Build.0 = Debug|Win32
+		{986FFCD4-883B-412D-927A-24CF274DE4B2}.Release|Win32.ActiveCfg = Release|Win32
+		{986FFCD4-883B-412D-927A-24CF274DE4B2}.Release|Win32.Build.0 = Release|Win32
+		{189124DC-1612-45CA-AE46-9C27E1B8CFC5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{189124DC-1612-45CA-AE46-9C27E1B8CFC5}.Debug|Win32.Build.0 = Debug|Win32
+		{189124DC-1612-45CA-AE46-9C27E1B8CFC5}.Release|Win32.ActiveCfg = Release|Win32
+		{189124DC-1612-45CA-AE46-9C27E1B8CFC5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
