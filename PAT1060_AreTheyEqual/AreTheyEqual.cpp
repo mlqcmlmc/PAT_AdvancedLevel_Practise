@@ -1,152 +1,95 @@
-#include <iostream>
-#include <string>
-using namespace std;
+//题意：将两个float型数据使用科学计数法表示，并比较两者是否相同
+//关键：要考虑所给输入数据的多种情况，比如 0,0.0,0.0123,05.032,00.020等这种比较特殊的情况。
+#include <iostream>  
+#include <fstream>  
+#include <cstring>  
+
+using namespace std; 
+
+int convert(const char* c, int n, char* &res)
+{
+    int exponent = 0;
+    int index_ = 0;
+    int res_index = 0;
+    while (c[index_] == '0')
+    {
+        ++index_;
+    }
+    int begin_ = index_;
+    if (c[index_] == '.')
+    {
+        exponent = 0;
+        ++index_;
+        while (c[index_] == '0' && c[index_] != '\0')
+        {
+            --exponent;
+            ++index_;
+        }
+        if (c[index_] == '\0')
+        {
+            exponent = 0;
+        }
+        while (c[index_] != '\0'&&res_index < n)
+        {
+            res[res_index] = c[index_];
+            ++index_;
+            ++res_index;
+        }
+
+    }
+    else
+    {
+
+        while (c[index_] != '\0'&&res_index < n)
+        {
+            if (c[index_]=='.')
+            {
+                exponent = index_ - begin_;
+                ++index_;
+            }
+            else
+            {
+                res[res_index] = c[index_];
+                ++index_;
+                ++res_index;
+            }
+        }
+        if (exponent==0)
+        {
+            while (c[index_] != '\0'&&c[index_] != '.')
+                ++index_;
+            exponent = index_ - begin_;
+        }
+    }
+
+    while (res_index < n)//不足则后面补0
+    {
+        res[res_index] = '0';
+        ++res_index;
+    }
+    res[n] = '\0';
+    return exponent;
+}
+
 int main()
 {
-    int N;
-    string A, B;
-    cin >> N >> A >> B;
-    int exponent_A = 0;
-    int exponent_B = 0;
-    auto index_A = A.find('.');
-    auto index_B = B.find('.');
-
-
-    if (index_A == string::npos)
+    int n;
+    cin >> n;
+    char A[105], B[105];
+    cin >> A >> B;
+    int Ac, Bc;
+    char *Ares, *Bres;
+    Ares = new char[n + 1];
+    Bres = new char[n + 1];
+    Ac = convert(A, n, Ares);
+    Bc = convert(B, n, Bres);
+    if (Ac == Bc && strcmp(Ares, Bres) == 0)
     {
-        exponent_A = A.size();
-    }
-    else if (A[index_A-1]!='0')
-    {
-        exponent_A = index_A;
+        cout << "YES 0." << Ares << "*10^" << Ac << endl;
     }
     else
     {
-        int index_ = index_A+1;
-        while (index_ < A.size() && A[index_] == '0')
-        {
-            ++index_;
-        }
-        exponent_A = (index_ - index_A - 1);
-        exponent_A = -exponent_A;
+        cout << "NO 0." << Ares << "*10^" << Ac << " 0." << Bres << "*10^" << Bc << endl;
     }
-
-
-    if (index_B == string::npos)
-    {
-        exponent_B = B.size();
-    }
-    else if (B[index_B - 1] != '0')
-    {
-        exponent_B = index_B;
-    }
-    else
-    {
-        int index_ = index_B + 1;
-        while (index_ < B.size() && B[index_] == '0')
-        {
-            ++index_;
-        }
-        exponent_B = (index_ - index_B - 1);
-        exponent_B = -exponent_B;
-    }
-
-
-
-
-
-
-    if (exponent_A == exponent_B&&exponent_A > 0)
-    {
-        if (exponent_A != A.size())
-        {
-            A.erase(exponent_A,1);
-        }
-        if (exponent_B != B.size())
-        {
-            B.erase(exponent_B,1);
-        }
-        if (N > A.size())
-        {
-            A.insert(A.size(), N - A.size(), '0');
-
-        }
-        if (N > B.size())
-        {
-            B.insert(B.size(), N - B.size(), '0');
-        }
-        string sub_A = A.substr(0, N);
-        string sub_B = B.substr(0, N);
-        if (sub_A==sub_B)
-        {
-            printf("YES");
-            printf(" 0.%s*10^%d", sub_A.c_str(), exponent_A);
-        }
-        else
-        {
-            printf("NO");
-            printf(" 0.%s*10^%d 0.%s*10^%d", sub_A.c_str(), exponent_A, sub_B.c_str(), exponent_A);
-        }
-    }
-    else if (exponent_A == exponent_B&&exponent_A <= 0)
-    {
-        int index_ = 0;
-        while (index_ < A.size() && (A[index_] == '0' || A[index_] == '.'))
-        {
-            ++index_;
-        }
-        A = A.substr(index_);
-        while (index_ < B.size() && (B[index_] == '0' || B[index_] == '.'))
-        {
-            ++index_;
-        }
-        B = B.substr(index_);
-        if (N > A.size())
-        {
-            A.insert(A.size(), N - A.size(), '0');
-
-        }
-        if (N > B.size())
-        {
-            B.insert(B.size(), N - B.size(), '0');
-        }
-        string sub_A = A.substr(0, N);
-        string sub_B = B.substr(0, N);
-        if (sub_A == sub_B)
-        {
-            printf("YES");
-            printf(" 0.%s*10^%d", sub_A.c_str(), exponent_A);
-        }
-        else
-        {
-            printf("NO");
-            printf(" 0.%s*10^%d 0.%s*10^%d", sub_A.c_str(), exponent_A, sub_B.c_str(), exponent_A);
-        }
-    }
-    /*else
-    {
-        if (exponent_A != A.size())
-        {
-            A.erase(exponent_A, 1);
-        }
-        if (exponent_B != B.size())
-        {
-            B.erase(exponent_B, 1);
-        }
-        if (N > A.size())
-        {
-            A.insert(A.size(), N - A.size(), '0');
-
-        }
-        if (N > B.size())
-        {
-            B.insert(B.size(), N - B.size(), '0');
-        }
-        string sub_A = A.substr(0, N);
-        string sub_B = B.substr(0, N);
-        printf("NO");
-        printf(" 0.%s*10^%d 0.%s*10^%d", sub_A.c_str(), exponent_A, sub_B.c_str(), exponent_B);
-    }*/
     return 0;
-
 }
